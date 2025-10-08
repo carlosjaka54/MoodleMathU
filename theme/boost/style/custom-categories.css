@@ -1,0 +1,200 @@
+/*
+ * Custom styles for MoodleMathU category listing
+ * Direct CSS file for immediate application
+ */
+
+/* Main container styling with green background */
+#frontpage-category-names,
+.frontpage-category-names,
+.enhanced-categories {
+    background-color: #e8f5e8 !important;
+    border: 1px solid #d4e6d4 !important;
+    border-radius: 8px !important;
+    padding: 15px !important;
+    margin: 20px 0 !important;
+}
+
+/* Category tree container */
+.course_category_tree {
+    background-color: transparent !important;
+}
+
+.course_category_tree .collapsible-actions {
+    text-align: right !important;
+    margin-bottom: 10px !important;
+}
+
+.course_category_tree .collapsible-actions .collapseexpand {
+    color: #666 !important;
+    font-size: 14px !important;
+    text-decoration: none !important;
+}
+
+.course_category_tree .collapsible-actions .collapseexpand:hover {
+    color: #333 !important;
+    text-decoration: underline !important;
+}
+
+/* Individual category styling */
+.course_category_tree .category {
+    margin-bottom: 2px !important;
+}
+
+.course_category_tree .category > .info {
+    background-color: #f8f9fa !important;
+    border: 1px solid #e9ecef !important;
+    border-radius: 4px !important;
+    padding: 8px 12px !important;
+    margin-bottom: 1px !important;
+}
+
+.course_category_tree .category > .info:hover {
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15) !important;
+    transform: translateY(-1px) !important;
+    transition: all 0.2s ease !important;
+}
+
+.course_category_tree .category > .info > .categoryname {
+    margin: 0 !important;
+    padding: 4px 8px !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    color: #333 !important;
+    border-radius: 3px !important;
+    display: block !important;
+    text-decoration: none !important;
+    background-image: none !important;
+}
+
+.course_category_tree .category > .info > .categoryname:hover {
+    background-color: #e9ecef !important;
+    text-decoration: none !important;
+}
+
+.course_category_tree .category > .info > .categoryname .numberofcourse {
+    color: #666 !important;
+    font-weight: normal !important;
+    font-size: 12px !important;
+}
+
+/* Category toggle icon styling */
+.category-toggle-icon {
+    display: inline-block !important;
+    width: 16px !important;
+    height: 16px !important;
+    margin-right: 8px !important;
+    vertical-align: middle !important;
+    background-size: 16px 16px !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    cursor: pointer !important;
+    transition: transform 0.2s ease !important;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><circle cx="8" cy="8" r="7" fill="%2328a745" stroke="%23155724" stroke-width="1"/><path d="M5 8h6" stroke="%23fff" stroke-width="2" stroke-linecap="round"/></svg>') !important;
+}
+
+.category-toggle-icon.collapsed {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><circle cx="8" cy="8" r="7" fill="%2328a745" stroke="%23155724" stroke-width="1"/><path d="M8 5v6M5 8h6" stroke="%23fff" stroke-width="2" stroke-linecap="round"/></svg>') !important;
+}
+
+.category-toggle-icon:hover {
+    transform: scale(1.1) !important;
+}
+
+/* Subcategory content indentation */
+.course_category_tree .category > .content {
+    padding-left: 25px !important;
+    margin-top: 2px !important;
+    transition: all 0.3s ease !important;
+    overflow: hidden !important;
+}
+
+/* Nested categories */
+.course_category_tree .category > .content .category > .info {
+    background-color: #f1f3f4 !important;
+    border-left: 3px solid #28a745 !important;
+}
+
+.course_category_tree .category > .content .category > .info > .categoryname {
+    font-size: 13px !important;
+    padding-left: 25px !important;
+}
+
+/* Third level nesting */
+.course_category_tree .category > .content .category .category > .info {
+    background-color: #f8f9fa !important;
+    border-left: 3px solid #6c757d !important;
+    margin-left: 10px !important;
+}
+
+.course_category_tree .category > .content .category .category > .info > .categoryname {
+    font-size: 12px !important;
+}
+
+/* Collapsed state */
+.course_category_tree .category.collapsed > .content {
+    display: none !important;
+    max-height: 0 !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    margin-top: 0 !important;
+}
+
+/* Special styling for top-level categories */
+.course_category_tree > .content > .category > .info {
+    background-color: #ffffff !important;
+    border: 2px solid #28a745 !important;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
+}
+
+.course_category_tree > .content > .category > .info > .categoryname {
+    font-weight: 600 !important;
+    font-size: 15px !important;
+    color: #155724 !important;
+}
+
+/* Active/selected state */
+.course_category_tree .category.selected > .info {
+    background-color: #d1ecf1 !important;
+    border-color: #bee5eb !important;
+}
+
+/* Loading state for categories */
+.loading-indicator {
+    text-align: center !important;
+    color: #999 !important;
+    font-style: italic !important;
+    padding: 10px !important;
+}
+
+/* Accessibility improvements */
+.course_category_tree .category > .info > .categoryname:focus {
+    outline: 2px solid #007bff !important;
+    outline-offset: 2px !important;
+}
+
+/* Hover effects */
+.course_category_tree .category > .info.hover {
+    background-color: #e9ecef !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .course_category_tree .category > .content {
+        padding-left: 15px !important;
+    }
+    
+    .course_category_tree .category > .info > .categoryname {
+        font-size: 13px !important;
+    }
+}
+
+/* Print styles */
+@media print {
+    .course_category_tree .category.collapsed > .content {
+        display: block !important;
+    }
+    
+    .collapsible-actions {
+        display: none !important;
+    }
+}

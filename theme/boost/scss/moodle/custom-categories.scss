@@ -1,0 +1,225 @@
+/*
+ * Custom styles for MoodleMathU category listing
+ * Based on the hierarchical design with expand/collapse icons
+ */
+
+/* Main container styling - clean design */
+#frontpage-category-names,
+.frontpage-category-names {
+    background-color: transparent;
+    border: none;
+    border-radius: 0;
+    padding: 0;
+    margin: 20px 0;
+}
+
+/* Category tree container */
+.course_category_tree {
+    background-color: transparent;
+    
+    /* Collapse/Expand all button styling */
+    .collapsible-actions {
+        text-align: right;
+        margin-bottom: 10px;
+        
+        .collapseexpand {
+            color: #666;
+            font-size: 14px;
+            text-decoration: none;
+            
+            &:hover {
+                color: #333;
+                text-decoration: underline;
+            }
+        }
+    }
+}
+
+/* Individual category styling */
+.course_category_tree .category {
+    margin-bottom: 2px;
+    
+    /* Category info container */
+    > .info {
+        background-color: #f8f9fa;
+        border: 1px solid #e9ecef;
+        border-radius: 4px;
+        padding: 8px 12px;
+        margin-bottom: 1px;
+        
+        /* Category name styling */
+        > .categoryname {
+            margin: 0;
+            padding: 4px 8px 4px 30px;
+            font-size: 14px;
+            font-weight: 500;
+            color: #333;
+            background-size: 16px 16px;
+            background-repeat: no-repeat;
+            background-position: 8px center;
+            border-radius: 3px;
+            display: block;
+            text-decoration: none;
+            
+            &:hover {
+                background-color: #e9ecef;
+                text-decoration: none;
+            }
+            
+            /* Course count styling */
+            .numberofcourse {
+                color: #666;
+                font-weight: normal;
+                font-size: 12px;
+            }
+        }
+    }
+    
+    /* Category toggle icon styling */
+    .category-toggle-icon {
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        margin-right: 8px;
+        vertical-align: middle;
+        background-size: 16px 16px;
+        background-repeat: no-repeat;
+        background-position: center;
+        cursor: pointer;
+        transition: transform 0.2s ease;
+        
+        /* Expanded state (minus icon) */
+        background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><circle cx="8" cy="8" r="7" fill="%2328a745" stroke="%23155724" stroke-width="1"/><path d="M5 8h6" stroke="%23fff" stroke-width="2" stroke-linecap="round"/></svg>');
+        
+        /* Collapsed state (plus icon) */
+        &.collapsed {
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><circle cx="8" cy="8" r="7" fill="%2328a745" stroke="%23155724" stroke-width="1"/><path d="M8 5v6M5 8h6" stroke="%23fff" stroke-width="2" stroke-linecap="round"/></svg>');
+        }
+        
+        &:hover {
+            transform: scale(1.1);
+        }
+    }
+    
+    /* Remove old background images from category names */
+    &.with_children > .info > .categoryname {
+        background-image: none;
+        padding-left: 8px;
+    }
+    
+    &.with_children.collapsed > .info > .categoryname {
+        background-image: none;
+    }
+    
+    /* Subcategory content indentation */
+    > .content {
+        padding-left: 25px;
+        margin-top: 2px;
+        
+        /* Nested categories */
+        .category {
+            > .info {
+                background-color: #f1f3f4;
+                border-left: 3px solid #28a745;
+                
+                > .categoryname {
+                    font-size: 13px;
+                    padding-left: 25px;
+                }
+            }
+            
+            /* Third level nesting */
+            .category > .info {
+                background-color: #f8f9fa;
+                border-left: 3px solid #6c757d;
+                margin-left: 10px;
+                
+                > .categoryname {
+                    font-size: 12px;
+                }
+            }
+        }
+    }
+    
+    /* Collapsed state */
+    &.collapsed > .content {
+        display: none;
+    }
+}
+
+/* Special styling for top-level categories */
+.course_category_tree > .content > .category {
+    > .info {
+        background-color: #ffffff;
+        border: 2px solid #28a745;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        
+        > .categoryname {
+            font-weight: 600;
+            font-size: 15px;
+            color: #155724;
+        }
+    }
+}
+
+/* Hover effects */
+.course_category_tree .category > .info:hover {
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    transform: translateY(-1px);
+    transition: all 0.2s ease;
+}
+
+/* Active/selected state */
+.course_category_tree .category.selected > .info {
+    background-color: #d1ecf1;
+    border-color: #bee5eb;
+}
+
+/* Loading state for categories */
+.course_category_tree .category.notloaded > .info > .categoryname::after {
+    content: "...";
+    color: #999;
+    margin-left: 5px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .course_category_tree .category > .content {
+        padding-left: 15px;
+    }
+    
+    .course_category_tree .category > .info > .categoryname {
+        font-size: 13px;
+        padding-left: 25px;
+    }
+}
+
+/* Animation for expand/collapse */
+.course_category_tree .category > .content {
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.course_category_tree .category.collapsed > .content {
+    max-height: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-top: 0;
+}
+
+/* Accessibility improvements */
+.course_category_tree .category > .info > .categoryname:focus {
+    outline: 2px solid #007bff;
+    outline-offset: 2px;
+}
+
+/* Print styles */
+@media print {
+    .course_category_tree .category.collapsed > .content {
+        display: block !important;
+    }
+    
+    .collapsible-actions {
+        display: none;
+    }
+}

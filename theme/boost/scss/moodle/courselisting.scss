@@ -122,15 +122,55 @@
     padding: 2px 18px;
 }
 
+/* Enhanced MoodleMathU category styling */
+#frontpage-category-names,
+.frontpage-category-names {
+    background-color: transparent;
+    border: none;
+    border-radius: 0;
+    padding: 0;
+    margin: 20px 0;
+}
+
+.course_category_tree .category > .info {
+    background-color: transparent;
+    border: none;
+    border-radius: 0;
+    padding: 4px 0;
+    margin-bottom: 1px;
+    transition: all 0.2s ease;
+}
+
+.course_category_tree .category > .info:hover {
+    background-color: #f8f9fa;
+}
+
+.course_category_tree > .content > .category > .info {
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+}
+
+.course_category_tree > .content > .category > .info > .categoryname {
+    font-weight: 500;
+    color: #333;
+}
+
+.course_category_tree .category > .content .category > .info {
+    background-color: transparent;
+    border: none;
+}
+
 .course_category_tree .category.with_children > .info > .categoryname {
-    background-image: url([[pix:moodle|t/expanded]]);
-    background-size: $icon-width $icon-height;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><circle cx="8" cy="8" r="7" fill="%2328a745" stroke="%23155724" stroke-width="1"/><path d="M5 8h6" stroke="%23fff" stroke-width="2" stroke-linecap="round"/></svg>');
+    background-size: 16px 16px;
     background-repeat: no-repeat;
-    background-position: center left;
+    background-position: 8px center;
+    padding-left: 30px;
 }
 
 .course_category_tree .category.with_children.collapsed > .info > .categoryname {
-    background-image: url([[pix:moodle|t/collapsed]]);
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><circle cx="8" cy="8" r="7" fill="%2328a745" stroke="%23155724" stroke-width="1"/><path d="M8 5v6M5 8h6" stroke="%23fff" stroke-width="2" stroke-linecap="round"/></svg>');
 }
 /* rtl:raw:
 .course_category_tree .category.with_children.collapsed > .info > .categoryname {

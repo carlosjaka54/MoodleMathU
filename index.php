@@ -106,7 +106,12 @@ $PAGE->set_pagetype('site-index');
 $PAGE->set_docs_path('');
 $editing = $PAGE->user_is_editing();
 $PAGE->set_title(get_string('home'));
-$PAGE->set_heading($SITE->fullname);
+// Hide site name for non-logged users (public view)
+if (isloggedin() && !isguestuser()) {
+    $PAGE->set_heading($SITE->fullname);
+} else {
+    $PAGE->set_heading('');
+}
 $PAGE->set_secondary_active_tab('coursehome');
 
 $siteformatoptions = course_get_format($SITE)->get_format_options();
@@ -145,4 +150,121 @@ echo $courserenderer->frontpage();
 if ($editing && has_capability('moodle/course:create', context_system::instance())) {
     echo $courserenderer->add_new_course_button();
 }
+// Add custom JavaScript for enhanced category functionality
+echo '<script>
+document.addEventListener("DOMContentLoaded", function() {
+    document.addEventListener("click", function(e) {
+        var categoryName = e.target.closest(".categoryname");
+        if (categoryName) {
+            var category = categoryName.closest(".category");
+            var link = categoryName.querySelector("a");
+            
+            if (category && category.classList.contains("with_children")) {
+                e.preventDefault();
+                
+                var content = null;
+                var children = category.children;
+                for (var i = 0; i < children.length; i++) {
+                    if (children[i].classList.contains("content")) {
+                        content = children[i];
+                        break;
+                    }
+                }
+                
+                if (category.classList.contains("collapsed")) {
+                    category.classList.remove("collapsed");
+                    if (content) {
+                        content.style.display = "block";
+                        content.style.animation = "slideDown 0.3s ease";
+                    }
+                } else {
+                    category.classList.add("collapsed");
+                    if (content) {
+                        content.style.display = "none";
+                    }
+                }
+            } else if (link) {
+                window.location.href = link.href;
+            }
+        }
+    });
+    
+    document.addEventListener("click", function(e) {
+        if (e.target.matches("[data-action=\\"toggle-all-categories\\"], .collapseexpand")) {
+            e.preventDefault();
+            var link = e.target;
+            var tree = link.closest(".course_category_tree");
+            var categories = tree.querySelectorAll(".category.with_children");
+            
+            if (link.classList.contains("collapse-all") || link.textContent.includes("Collapse")) {
+                categories.forEach(function(cat) {
+                    cat.classList.add("collapsed");
+                    var children = cat.children;
+                    for (var i = 0; i < children.length; i++) {
+                        if (children[i].classList.contains("content")) {
+                            children[i].style.display = "none";
+                            break;
+                        }
+                    }
+                });
+                link.classList.remove("collapse-all");
+                link.textContent = "Expand all";
+            } else {
+                categories.forEach(function(cat) {
+                    cat.classList.remove("collapsed");
+                    var children = cat.children;
+                    for (var i = 0; i < children.length; i++) {
+                        if (children[i].classList.contains("content")) {
+                            children[i].style.display = "block";
+                            break;
+                        }
+                    }
+                });
+                link.classList.add("collapse-all");
+                link.textContent = "Collapse all";
+            }
+        }
+    });
+    
+    var style = document.createElement("style");
+    style.textContent = "\\
+        @keyframes slideDown {\\
+            from { opacity: 0; transform: translateY(-10px); }\\
+            to { opacity: 1; transform: translateY(0); }\\
+        }\\
+        .course_category_tree .category > .content {\\
+            transition: all 0.3s ease;\\
+        }\\
+        .categoryname:hover {\\
+            cursor: pointer;\\
+        }\\
+        .categoryname a {\\
+            text-decoration: none;\\
+            color: inherit;\\
+        }\\
+        .categoryname a:hover {\\
+            text-decoration: underline;\\
+        }\\
+        .category:not(.with_children) .categoryname:hover {\\
+            background-color: #f0f0f0;\\
+            border-radius: 3px;\\
+        }\\
+        body:not(.userloggedin) #page-header h1,\\
+        body:not(.userloggedin) .page-header-headings h1 {\\
+            display: none !important;\\
+        }\\
+        #frontpage-category-names h2,\\
+        .frontpage-category-names h2 {\\
+            margin-bottom: 10px;\\
+        }\\
+        .course_category_tree {\\
+            background: transparent !important;\\
+            border: none !important;\\
+            box-shadow: none !important;\\
+        }\\
+    ";
+    document.head.appendChild(style);
+});
+</script>';
+
 echo $OUTPUT->footer();
