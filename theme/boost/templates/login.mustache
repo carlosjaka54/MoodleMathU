@@ -92,14 +92,13 @@ require(['theme_boost/loader'], function() {
   M.util.js_complete('theme_boost/loader');
 });
 
-// Control del popup de bienvenida - solo una vez por sesión
+// Control del popup de bienvenida
 window.cerrarPopup = function() {
   document.getElementById('popup-noticia').style.display = 'none';
-  sessionStorage.setItem('popupMostrado', 'true');
 };
 
-// Mostrar el popup solo si no se ha mostrado en esta sesión
-if (!sessionStorage.getItem('popupMostrado')) {
+// Mostrar el popup al cargar la página EXCEPTO cuando hay error de login
+if (!document.getElementById('loginerrormessage')) {
   document.getElementById('popup-noticia').style.display = 'flex';
 }
 {{/js}}
