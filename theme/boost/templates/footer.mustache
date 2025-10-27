@@ -17,84 +17,542 @@
 {{!
     @template theme_boost/footer
 
-    Page footer.
-
-    Example context (json):
-    {
-        "output": {
-            "page_doc_link": "Documentation for this page",
-            "supportemail": "<a href=\"#\">Contact site support</a>",
-            "has_popover_links": true,
-            "services_support": "Services and support",
-            "login_info": "You are logged in as cute kitten",
-            "moodle_release": "90210",
-            "has_communication_links": true,
-            "communication_url": "https://element:8081/#/room/#yourroom:synapse",
-            "communication_link": "<a href=\"#\">Communication room</a>"
-        }
-    }
+    Custom Footer for Universidad del Putumayo
 }}
 
-<footer id="page-footer" class="footer-popover bg-white">
-    <div data-region="footer-container-popover">
-        {{#output.has_communication_links}}
-            <button onclick="window.open('{{output.communication_url}}', '_blank', 'noreferrer')" class="btn btn-icon rounded-circle bg-primary text-white btn-footer-communication" aria-label="{{#str}}communicationroomlink, course{{/str}}">
-                {{#pix}}t/messages-o, core{{/pix}}
-            </button>
-        {{/output.has_communication_links}}
-        <button class="btn btn-icon rounded-circle bg-secondary btn-footer-popover" data-action="footer-popover" aria-label="{{#str}}showfooter, theme_boost{{/str}}">
-            {{#pix}}e/question, core{{/pix}}
-        </button>
-    </div>
-    <div class="footer-content-popover container" data-region="footer-content-popover">
-        {{#output.has_communication_links}}
-            <div class="footer-section p-3 border-bottom footer-link-communication">
-                <div class="footer-support-link">{{{ output.communication_link }}}</div>
-            </div>
-        {{/output.has_communication_links}}
-        {{# output.has_popover_links }}
-            <div class="footer-section p-3 border-bottom">
-                {{# output.page_doc_link }}
-                    <div class="footer-support-link">{{{ output.page_doc_link }}}</div>
-                {{/ output.page_doc_link }}
-
-                {{# output.services_support_link }}
-                    <div class="footer-support-link">{{{ output.services_support_link }}}</div>
-                {{/ output.services_support_link }}
-
-                {{# output.supportemail }}
-                    <div class="footer-support-link">{{{ output.supportemail }}}</div>
-                {{/ output.supportemail }}
-            </div>
-        {{/ output.has_popover_links }}
-        <div class="footer-section p-3 border-bottom">
-            <div class="logininfo">
-                {{{ output.login_info }}}
-            </div>
-            <div class="tool_usertours-resettourcontainer">
-            </div>
-
-            {{{ output.standard_footer_html }}}
-            {{{ output.standard_end_of_body_html }}}
-        </div>
-        <div class="footer-section p-3">
-            <div>{{#str}}poweredbymoodle, core{{/str}}</div>
-            {{#output.moodle_release}}
-                <div>
-                    {{#str}}version, core{{/str}} {{{ output.moodle_release }}}
+<!-- Custom Footer -->
+<footer id="page-footer" class="custom-footer">
+    <!-- Main Footer Section -->
+    <div class="footer-main">
+        <div class="footer-content-wrapper">
+            <div class="row">
+                <!-- Sección Institución -->
+                <div class="col-md-4 footer-col footer-col-first">
+                    <div class="footer-logo-section">
+                        {{#pix}} institucion_universitaria_del_putumayo, theme_boost, Logo Universidad del Putumayo {{/pix}}
+                        <p class="footer-description">
+                            Institución de Educación Superior sujeta a inspección y vigilancia por el Ministerio de Educación Nacional. 
+                            Ofrecemos programas a nivel de Pre-grado por ciclos propedéuticos con modalidad presencial. 
+                            SNIES Mocoa 3115 – Sibundoy 3116
+                        </p>
+                    </div>
                 </div>
-            {{/output.moodle_release}}
+
+                <!-- Sección Redes Sociales -->
+                <div class="col-md-4 footer-col footer-col-second">
+                    <h3 class="footer-title">Síganos</h3>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/OficialITP/" target="_blank" class="social-link">
+                            <span class="social-icon facebook-icon">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="vertical-align: middle;">
+                                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                                </svg>
+                            </span>
+                            <span class="social-text">Facebook</span>
+                        </a>
+                        <a href="https://x.com/ITPOficial" target="_blank" class="social-link">
+                            <span class="social-icon twitter-icon">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="vertical-align: middle;">
+                                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                                </svg>
+                            </span>
+                            <span class="social-text">Twitter</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Sección Contacto -->
+                <div class="col-md-4 footer-col footer-col-third">
+                    <h3 class="footer-title">Contacto</h3>
+                    <div class="contact-info">
+                        <p class="contact-institution">INSTITUCIÓN UNIVERSITARIA DEL PUTUMAYO</p>
+                        <p class="contact-item">
+                            <span class="contact-icon">📞</span>
+                            Teléfono: +57 313 805 2807
+                        </p>
+                        <p class="contact-item">
+                            <span class="contact-icon">✉️</span>
+                            E-mail: <a href="mailto:ti@itp.edu.co" class="contact-email">ti@itp.edu.co</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
-    <div class="footer-content-debugging footer-dark bg-dark text-light">
-        <div class="container-fluid footer-dark-inner">
+    <!-- Copyright Section -->
+    <div class="footer-copyright">
+        <div class="footer-content-wrapper">
+            <p class="copyright-text">
+                Copyright © 2025 - Desarrollado por estudiantes Noveno Semestre — Ingeniería de Sistemas.
+                Soportado por <a href="https://moodle.org/" target="_blank" class="copyright-link">Moodle</a>
+            </p>
+        </div>
+    </div>
+
+    <!-- Moodle Essential Footer Elements -->
+    <div class="footer-moodle-content">
+        <div class="container-fluid">
+            <div id="course-footer">{{{ output.course_footer }}}</div>
+            
+            {{# output.page_doc_link }}
+                <div class="footer-support-link">{{{ output.page_doc_link }}}</div>
+            {{/ output.page_doc_link }}
+            
+            {{# output.services_support_link }}
+                <div class="footer-support-link">{{{ output.services_support_link }}}</div>
+            {{/ output.services_support_link }}
+            
+            {{# output.supportemail }}
+                <div class="footer-support-link">{{{ output.supportemail }}}</div>
+            {{/ output.supportemail }}
+            
+            {{{ output.login_info }}}
+            <div class="tool_usertours-resettourcontainer"></div>
+            {{{ output.home_link }}}
+            
+            <nav class="nav navbar-nav d-md-none" aria-label="{{#str}}custommenu, admin{{/str}}">
+                {{# output.custom_menu_flat }}
+                    <ul class="list-unstyled pt-3">
+                        {{> theme_boost/custom_menu_footer }}
+                    </ul>
+                {{/ output.custom_menu_flat }}
+            </nav>
+            
+            {{{ output.standard_footer_html }}}
             {{{ output.debug_footer_html }}}
         </div>
     </div>
+    
+    {{{ output.standard_end_of_body_html }}}
+    
+    {{! Modal de Video para Página de Inicio }}
+    <div id="videoModalInicio" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.85);z-index:999999;padding:20px;overflow:auto;">
+        <div style="position:relative;background:white;max-width:1100px;margin:50px auto;border-radius:15px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,0.5);">
+            <div style="background:linear-gradient(135deg,#7CB342 0%,#8BC34A 100%);padding:20px 25px;display:flex;justify-content:space-between;align-items:center;">
+                <h3 style="margin:0;color:white;font-size:22px;font-family:Arial,sans-serif;">UniPutumayo</h3>
+                <button id="btnCerrarModalVideo" style="background:rgba(255,255,255,0.2);border:none;color:white;width:45px;height:45px;border-radius:50%;font-size:28px;cursor:pointer;transition:all 0.3s ease;line-height:1;font-weight:bold;">×</button>
+            </div>
+            <div id="videoContainerInicio" style="position:relative;width:100%;padding-bottom:56.25%;height:0;background:#000;"></div>
+            <div style="background:#f8f9fa;padding:18px 25px;text-align:center;border-top:1px solid #e0e0e0;">
+                <p style="margin:0;color:#666;font-size:15px;font-family:Arial,sans-serif;">ℹ️ Este video contiene información importante para tu aprendizaje en la plataforma.</p>
+            </div>
+        </div>
+    </div>
+    
+    {{#js}}
+    require(['jquery'], function($) {
+        // Función para cerrar el modal
+        window.cerrarVideoModal = function() {
+            var modal = document.getElementById('videoModalInicio');
+            var contenedor = document.getElementById('videoContainerInicio');
+            
+            if (modal) {
+                modal.style.display = 'none';
+                contenedor.innerHTML = '';
+                document.body.style.overflow = '';
+                
+                // Guardar que ya vio el video
+                localStorage.setItem('video_modal_visto', new Date().toDateString());
+                
+                console.log('✅ Modal cerrado');
+            }
+        };
+        
+        // Event listener para el botón de cerrar
+        var btnCerrar = document.getElementById('btnCerrarModalVideo');
+        if (btnCerrar) {
+            btnCerrar.addEventListener('click', window.cerrarVideoModal);
+        }
+        
+        // Cerrar con clic fuera del modal
+        var modalInicio = document.getElementById('videoModalInicio');
+        if (modalInicio) {
+            modalInicio.addEventListener('click', function(e) {
+                if (e.target.id === 'videoModalInicio') {
+                    window.cerrarVideoModal();
+                }
+            });
+        }
+        
+        // Cerrar con tecla Escape
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' || e.key === 'Esc') {
+                var modal = document.getElementById('videoModalInicio');
+                if (modal && modal.style.display === 'block') {
+                    window.cerrarVideoModal();
+                }
+            }
+        });
+        
+        // Solo ejecutar en la página de inicio (frontpage)
+        var esPaginaInicio = $('body').hasClass('pagelayout-frontpage') || 
+                            ($('body').hasClass('path-site') && window.location.pathname === '/') ||
+                            (window.location.pathname.indexOf('/index.php') !== -1 && !window.location.search);
+        
+        if (esPaginaInicio) {
+            console.log('📍 Estás en la página de inicio');
+            
+            // Verificar si ya vio el video hoy
+            var hoy = new Date().toDateString();
+            var visto = localStorage.getItem('video_modal_visto');
+            
+            if (visto !== hoy) {
+                console.log('🎬 Preparando modal de video...');
+                
+                // Mostrar modal después de 2 segundos
+                setTimeout(function() {
+                    var modal = document.getElementById('videoModalInicio');
+                    var contenedor = document.getElementById('videoContainerInicio');
+                    
+                    if (modal && contenedor) {
+                        // Crear iframe
+                        var iframe = document.createElement('iframe');
+                        iframe.src = 'https://www.youtube.com/embed/nnQHxEnq6Go?autoplay=1&rel=0';
+                        iframe.style.cssText = 'position:absolute;top:0;left:0;width:100%;height:100%;border:none;';
+                        iframe.setAttribute('allowfullscreen', '');
+                        iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
+                        
+                        contenedor.appendChild(iframe);
+                        modal.style.display = 'block';
+                        document.body.style.overflow = 'hidden';
+                        
+                        console.log('✅ Modal de video mostrado en página de inicio');
+                    }
+                }, 2000);
+            } else {
+                console.log('ℹ️ El usuario ya vio el video hoy');
+            }
+        } else {
+            console.log('📍 No estás en la página de inicio - modal no se mostrará');
+        }
+        
+        // Hacer que las imágenes de los cursos sean clickeables
+        $(document).ready(function() {
+            $('.coursebox').each(function() {
+                var $coursebox = $(this);
+                var $courseLink = $coursebox.find('.coursename a');
+                
+                if ($courseLink.length > 0) {
+                    var courseUrl = $courseLink.attr('href');
+                    
+                    // Hacer que la imagen sea clickeable
+                    $coursebox.find('.courseimage').on('click', function(e) {
+                        e.preventDefault();
+                        window.location.href = courseUrl;
+                    });
+                    
+                    // También hacer que toda la tarjeta sea clickeable (excepto enlaces)
+                    $coursebox.on('click', function(e) {
+                        // Solo si no se hace clic en un enlace
+                        if (!$(e.target).is('a') && !$(e.target).closest('a').length) {
+                            window.location.href = courseUrl;
+                        }
+                    });
+                    
+                    // Agregar cursor pointer a toda la tarjeta
+                    $coursebox.css('cursor', 'pointer');
+                }
+            });
+            
+            console.log('✅ Tarjetas de curso clickeables habilitadas');
+        });
+    });
+    {{/js}}
 </footer>
-{{#js}}
-require(['theme_boost/footer-popover'], function(FooterPopover) {
-    FooterPopover.init();
-});
-{{/js}}
+
+<!-- Footer Styles -->
+<style>
+/* Prevenir scroll horizontal */
+body {
+    overflow-x: hidden;
+}
+
+.custom-footer {
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    margin-top: 50px;
+    overflow-x: hidden;
+}
+
+/* Main Footer Section */
+.footer-main {
+    background: linear-gradient(135deg, #7CB342 0%, #8BC34A 100%);
+    padding: 50px 0 30px 0;
+    color: #ffffff;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.footer-content-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.footer-col {
+    padding: 0 25px;
+}
+
+/* Desktop column alignment */
+.footer-col-first { text-align: left; }
+.footer-col-second { text-align: left; }
+.footer-col-third { text-align: left; }
+
+/* Logo Section */
+.footer-logo-section {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.footer-logo-section img {
+    width: 200px;
+    max-width: 200px;
+    height: auto;
+    margin-bottom: 20px;
+    display: block;
+}
+
+.footer-description {
+    font-size: 18px;
+    line-height: 1.8;
+    color: #ffffff;
+    margin: 0;
+}
+
+/* Footer Titles */
+.footer-title {
+    font-size: 26px;
+    font-weight: bold;
+    color: #ffffff;
+    margin-bottom: 25px;
+    margin-top: 0;
+}
+
+/* Social Links */
+.social-links {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.social-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #ffffff;
+    text-decoration: none;
+    transition: transform 0.2s ease;
+}
+
+.social-link:hover {
+    transform: translateX(5px);
+    color: #ffffff;
+}
+
+.social-icon {
+    width: 42px;
+    height: 42px;
+    background: #ffffff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.facebook-icon {
+    color: #3b5998;
+    display: inline-flex;
+    align-items: center;
+}
+
+.facebook-icon svg {
+    width: 16px;
+    height: 16px;
+}
+
+.twitter-icon {
+    color: #1DA1F2;
+    font-size: 16px;
+    display: inline-flex;
+    align-items: center;
+}
+
+.twitter-icon svg {
+    width: 16px;
+    height: 16px;
+}
+
+.social-text {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+/* Contact Section */
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.contact-institution {
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 15px;
+    color: #ffffff;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 18px;
+    color: #ffffff;
+    margin: 0;
+}
+
+.contact-icon {
+    font-size: 16px;
+}
+
+.contact-email {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+.contact-email:hover {
+    color: #f0f0f0;
+}
+
+/* Copyright Section */
+.footer-copyright {
+    background: #689F38;
+    padding: 20px 0;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.copyright-text {
+    text-align: center;
+    color: #ffffff;
+    margin: 0;
+    font-size: 14px;
+}
+
+.copyright-link {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+.copyright-link:hover {
+    color: #f0f0f0;
+}
+
+/* Moodle Essential Footer Elements */
+.footer-moodle-content {
+    display: none;
+    /* Elementos ocultos visualmente pero presentes en el DOM para funcionalidad de Moodle */
+}
+
+.footer-moodle-content .container-fluid {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.footer-support-link {
+    margin: 5px 0;
+    font-size: 14px;
+}
+
+.footer-support-link a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.footer-support-link a:hover {
+    text-decoration: underline;
+}
+
+#course-footer {
+    margin-bottom: 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .footer-content-wrapper {
+        max-width: 100%;
+        padding: 0 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    .custom-footer {
+        margin-top: 30px;
+    }
+    
+    .footer-main {
+        padding: 30px 0 20px 0;
+    }
+    
+    .footer-col {
+        padding: 20px 15px;
+        text-align: left;
+        margin-bottom: 20px;
+    }
+    
+    .footer-logo-section {
+        align-items: flex-start;
+    }
+    
+    .footer-logo-section img {
+        width: 150px;
+        max-width: 150px;
+    }
+    
+    .footer-description {
+        text-align: left;
+        font-size: 13px;
+    }
+    
+    .footer-title {
+        font-size: 22px;
+        margin-bottom: 20px;
+    }
+    
+    .social-links {
+        align-items: flex-start;
+    }
+    
+    .contact-info {
+        align-items: flex-start;
+    }
+    
+    .contact-item {
+        justify-content: flex-start;
+        font-size: 14px;
+    }
+    
+    .copyright-text {
+        font-size: 12px;
+        padding: 0 10px;
+    }
+    
+    .footer-moodle-content {
+        padding: 15px 0;
+    }
+    
+    .footer-moodle-content .container-fluid {
+        padding: 0 15px;
+    }
+}
+</style>

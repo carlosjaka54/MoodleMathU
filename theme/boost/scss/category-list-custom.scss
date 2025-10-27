@@ -1,0 +1,194 @@
+// Custom Category List Design - Universidad del Putumayo
+// Diseño de lista de categorías con iconos y estilos
+
+// Contenedor principal de categorías con borde
+.category-browse,
+.categorypicker,
+div:has(> h2:contains("Categorías")) {
+    background: #ffffff;
+    border: 3px solid #7CB342;
+    border-radius: 15px;
+    padding: 25px;
+    margin: 50px 0 30px 0;
+    box-shadow: 0 6px 20px rgba(124, 179, 66, 0.15);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+// Título de sección "Categorías"
+.category-browse h2,
+h2.category-heading,
+h2:contains("Categorías") {
+    background: linear-gradient(135deg, #7CB342 0%, #8BC34A 100%);
+    padding: 20px 25px;
+    color: #ffffff;
+    font-size: 24px;
+    font-weight: 700;
+    margin: -25px -25px 25px -25px;
+    border-radius: 12px 12px 0 0;
+    box-shadow: 0 4px 12px rgba(124, 179, 66, 0.3);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border: none;
+}
+
+// Cada categoría en la lista
+.category {
+    background: #ffffff;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+    border-radius: 10px;
+    border: 2px solid #e0e0e0;
+    border-left: 5px solid #7CB342;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+    
+    &:hover {
+        background: #f1f8e9;
+        border-left-color: #689F38;
+        box-shadow: 0 4px 12px rgba(124, 179, 66, 0.15);
+        transform: translateX(5px);
+    }
+    
+    // Icono de categoría
+    &::before {
+        content: '➤';
+        display: inline-block;
+        margin-right: 12px;
+        color: #7CB342;
+        font-weight: bold;
+        font-size: 16px;
+    }
+    
+    a {
+        color: #2c3e50;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 16px;
+        
+        &:hover {
+            color: #7CB342;
+        }
+    }
+    
+    // Contador de cursos
+    .numberofcourse {
+        color: #7CB342;
+        font-size: 13px;
+        margin-left: 8px;
+        font-weight: 600;
+        background: #e8f5e9;
+        padding: 2px 8px;
+        border-radius: 12px;
+    }
+}
+
+// Categorías principales (sedes)
+.category.category-0,
+.category-browse > ul > li {
+    background: linear-gradient(135deg, #f1f8e9 0%, #ffffff 100%);
+    border: 3px solid #7CB342;
+    border-radius: 12px;
+    font-weight: 700;
+    padding: 20px 25px;
+    box-shadow: 0 4px 15px rgba(124, 179, 66, 0.2);
+    margin-bottom: 15px;
+    
+    &:hover {
+        background: linear-gradient(135deg, #7CB342 0%, #8BC34A 100%);
+        
+        a {
+            color: #ffffff;
+        }
+        
+        &::before {
+            background: #ffffff;
+            color: #7CB342;
+        }
+    }
+    
+    &::before {
+        content: '✓';
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+        background: #7CB342;
+        color: white;
+        border-radius: 50%;
+        text-align: center;
+        line-height: 30px;
+        margin-right: 15px;
+        font-size: 16px;
+        font-weight: bold;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    }
+    
+    a {
+        font-size: 18px;
+        color: #2c3e50;
+    }
+}
+
+// Subcategorías (facultades)
+.category.category-1,
+.category-browse ul ul li {
+    margin-left: 40px;
+    background: #fafafa;
+    border-left: 3px solid #9e9e9e;
+    
+    &::before {
+        content: '➤';
+        color: #9e9e9e;
+    }
+    
+    &:hover {
+        border-left-color: #7CB342;
+        
+        &::before {
+            color: #7CB342;
+        }
+    }
+}
+
+// Lista de categorías
+.category-browse ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    
+    li {
+        list-style: none;
+        
+        ul {
+            margin-top: 5px;
+            margin-bottom: 10px;
+        }
+    }
+}
+
+// Botón "Colapsar todo"
+.collapsible-actions {
+    text-align: right;
+    margin-bottom: 15px;
+    
+    a {
+        color: #7CB342;
+        text-decoration: none;
+        font-size: 14px;
+        
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
+
+// Iconos de expandir/colapsar
+.category .toggle {
+    cursor: pointer;
+    color: #7CB342;
+    margin-right: 8px;
+    
+    &:hover {
+        color: #5a8f2d;
+    }
+}

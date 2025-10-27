@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plantilla de Imagen de Curso - Universidad del Putumayo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f0f0f0;
+            padding: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .course-image {
+            width: 600px;
+            height: 400px;
+            background: linear-gradient(135deg, #7CB342 0%, #8BC34A 100%);
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+        
+        /* Sombra diagonal */
+        .course-image::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, transparent 0%, transparent 50%, rgba(0,0,0,0.3) 100%);
+            pointer-events: none;
+        }
+        
+        .icon-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10;
+        }
+        
+        /* Icono de cámara */
+        .camera-icon {
+            width: 120px;
+            height: 120px;
+            background: #ffffff;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        
+        .camera-icon svg {
+            width: 80px;
+            height: 80px;
+            fill: #7CB342;
+        }
+        
+        .instructions {
+            width: 100%;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        
+        h1 {
+            color: #7CB342;
+            margin-top: 0;
+        }
+        
+        .info-box {
+            background: #e8f5e9;
+            padding: 15px;
+            border-left: 4px solid #7CB342;
+            margin: 10px 0;
+        }
+        
+        button {
+            background: #7CB342;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        
+        button:hover {
+            background: #689F38;
+        }
+    </style>
+</head>
+<body>
+    <div class="instructions">
+        <h1>🎨 Plantilla de Imagen para Cursos</h1>
+        <p><strong>Universidad del Putumayo - Moodle</strong></p>
+        
+        <div class="info-box">
+            <h3>📐 Especificaciones Técnicas:</h3>
+            <ul>
+                <li><strong>Dimensiones:</strong> 600 x 400 píxeles</li>
+                <li><strong>Formato:</strong> JPG o PNG</li>
+                <li><strong>Peso máximo:</strong> 500 KB recomendado</li>
+                <li><strong>Color base:</strong> Verde #7CB342 a #8BC34A (degradado diagonal)</li>
+                <li><strong>Efecto:</strong> Sombra diagonal oscura en esquina inferior derecha</li>
+            </ul>
+        </div>
+        
+        <div class="info-box">
+            <h3>📝 Instrucciones:</h3>
+            <ol>
+                <li>Captura una imagen de uno de los diseños de abajo (clic derecho → Guardar imagen)</li>
+                <li>O usa esta página como referencia para crear tu imagen en Photoshop/Canva</li>
+                <li>Sube la imagen en: <strong>Curso → Editar ajustes → Imagen del curso</strong></li>
+                <li>Purga el caché de Moodle para ver los cambios</li>
+            </ol>
+        </div>
+        
+        <div>
+            <button onclick="downloadImage('camera')">📥 Descargar Plantilla Cámara</button>
+            <button onclick="downloadImage('document')">📥 Descargar Plantilla Documento</button>
+            <button onclick="downloadImage('book')">📥 Descargar Plantilla Libro</button>
+        </div>
+    </div>
+    
+    <!-- Plantilla 1: Ícono de Cámara -->
+    <div class="course-image" id="camera-template">
+        <div class="icon-container">
+            <div class="camera-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M9 2L7.17 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-3.17L15 2H9zm3 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z"/>
+                    <circle cx="12" cy="12" r="3"/>
+                </svg>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Plantilla 2: Ícono de Documento -->
+    <div class="course-image" id="document-template">
+        <div class="icon-container">
+            <div class="camera-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zM6 20V4h7v5h5v11H6z"/>
+                    <path d="M8 12h8v2H8zm0 4h8v2H8z"/>
+                </svg>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Plantilla 3: Ícono de Libro -->
+    <div class="course-image" id="book-template">
+        <div class="icon-container">
+            <div class="camera-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 4h5v8l-2.5-1.5L6 12V4z"/>
+                </svg>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function downloadImage(type) {
+            // Esta es una función de demostración
+            // En la práctica, el usuario debe tomar captura de pantalla
+            alert('Para guardar la imagen:\n\n1. Haz clic derecho sobre la imagen de "' + type + '"\n2. Selecciona "Guardar imagen como..."\n3. Guarda con el nombre del curso\n4. Sube a Moodle en: Curso → Editar ajustes → Imagen del curso');
+        }
+    </script>
+</body>
+</html>
