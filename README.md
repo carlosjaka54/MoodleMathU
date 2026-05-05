@@ -8,6 +8,7 @@
 
 
 > **Prueba:** Este cambio fue realizado desde Visual Studio Code.
+> **Siguinete prueba:** Este cambio fue realizado desde Visual Studio Code.
 
 Moodle is designed to allow educators, administrators and learners to create personalised learning environments with a single robust, secure and integrated system.
 
